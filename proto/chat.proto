@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option go_package = "github.com/ILLIDOM/chat_app/proto";
+package proto;
+
+service Chat {
+    rpc JoinChannel (Channel) returns (stream Message) {}
+    rpc SendMessage (stream Message) returns (MessageAck) {}
+}
+
+// defines a specific channel
+message Channel {
+    string name = 1;
+    string senders_name = 2;
+}
+
+// message sent by a sender to a specific channel
+message Message {
+    string sender = 1;
+    Channel channel = 2;
+    string message = 3;
+}
+
+// Message Ack
+message MessageAck {
+    string status = 1;
+}
