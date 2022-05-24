@@ -11,12 +11,12 @@ service Chat {
 // defines a specific channel
 message Channel {
     string name = 1;
-    string senders_name = 2;
+    string user = 2; //name of user joining a channel
 }
 
-// message sent by a sender to a specific channel
+// message sent by a user to a specific channel
 message Message {
-    string sender = 1;
+    string user = 1;
     Channel channel = 2;
     string message = 3;
 }
